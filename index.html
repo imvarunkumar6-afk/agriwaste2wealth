@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriWaste2Wealth | Agricultural Residue Marketplace</title>
+    <meta
+      name="description"
+      content="AgriWaste2Wealth brings together farmers, buyers, researchers, and administrators to convert agricultural residues into measurable value through AI, matching, and circular-economy workflows."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container navbar">
+        <a href="#home" class="brand" aria-label="AgriWaste2Wealth home">
+          <span class="brand-mark"><i class="fa-solid fa-seedling"></i></span>
+          <span>AgriWaste2Wealth</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#architecture">Architecture</a>
+          <a href="#schema">Schema</a>
+          <a href="#plan">Plan</a>
+          <a href="#dashboard">Dashboards</a>
+          <a href="#marketplace">Marketplace</a>
+          <a href="#ai">AI Estimator</a>
+          <a href="#research">Research</a>
+        </nav>
+        <div class="header-actions">
+          <span class="system-status" id="systemStatus"><span class="status-dot"></span> Syncing backend</span>
+          <button type="button" class="nav-cta auth-action" id="authAction">Sign in</button>
+        </div>
+      </div>
+    </header>
+
+    <dialog class="auth-dialog" id="authDialog" aria-labelledby="authTitle">
+      <form id="authForm" class="auth-form">
+        <button type="button" class="dialog-close" id="authClose" aria-label="Close sign in">×</button>
+        <p class="eyebrow">AgriWaste2Wealth account</p>
+        <h2 id="authTitle">Sign in</h2>
+        <p class="muted" id="authDescription">Sign in to use live marketplace and research features.</p>
+        <div class="form-block" id="authNameField" hidden>
+          <label for="authName">Name</label>
+          <input id="authName" name="name" type="text" minlength="2" autocomplete="name" />
+        </div>
+        <div class="form-block" id="authRoleField" hidden>
+          <label for="authRole">Account type</label>
+          <select id="authRole" name="role">
+            <option value="farmer">Farmer</option>
+            <option value="buyer">Buyer</option>
+            <option value="researcher">Researcher</option>
+          </select>
+        </div>
+        <div class="form-block">
+          <label for="authEmail">Email</label>
+          <input id="authEmail" name="email" type="email" required autocomplete="email" />
+        </div>
+        <div class="form-block">
+          <label for="authPassword">Password</label>
+          <input id="authPassword" name="password" type="password" required minlength="6" autocomplete="current-password" />
+        </div>
+        <p class="auth-error" id="authError" role="alert" hidden></p>
+        <button type="submit" class="btn btn-primary auth-submit" id="authSubmit">Sign in</button>
+        <button type="button" class="auth-switch" id="authSwitch">Create an account</button>
+      </form>
+    </dialog>
+    <div class="action-notice" id="actionNotice" role="status" aria-live="polite" hidden></div>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="container hero-inner">
+          <div>
+            <div class="hero-badges">
+              <span class="badge"><i class="fa-solid fa-circle-check"></i> Synthetic demo data</span>
+              <span class="badge"><i class="fa-solid fa-brain"></i> AI valuation</span>
+              <span class="badge"><i class="fa-solid fa-people-arrows"></i> Buyer-seller matching</span>
+            </div>
+            <div class="hero-meta">
+              <span class="backend-chip" id="backendChip"><span class="chip-dot"></span> Backend API ready</span>
+              <span class="micro-copy">Live marketplace workflow for farms, buyers, and research teams</span>
+            </div>
+            <h1>Turn agricultural residue into rural value.</h1>
+            <p>
+              AgriWaste2Wealth connects farmers, buyers, researchers, and administrators to quantify residue potential,
+              identify viable valorization pathways, and trade biomass responsibly through a transparent digital marketplace.
+            </p>
+            <div class="cta-row">
+              <a href="#marketplace" class="btn btn-primary">Explore marketplace</a>
+              <a href="#architecture" class="btn btn-secondary">View architecture</a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-card">
+                <span class="value">4.8L+</span>
+                <span class="label">Estimated annual value</span>
+              </div>
+              <div class="stat-card">
+                <span class="value">26</span>
+                <span class="label">Active match opportunities</span>
+              </div>
+              <div class="stat-card">
+                <span class="value">4 roles</span>
+                <span class="label">Farmer • Buyer • Admin • Researcher</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-panel">
+            <div class="feature-panel">
+              <div class="image-box"></div>
+              <div class="content">
+                <h3>Marketplace snapshot</h3>
+                <div class="mini-list">
+                  <div class="mini-item"><span>Rice straw</span><strong>₹1,450/t</strong></div>
+                  <div class="mini-item"><span>Sugarcane bagasse</span><strong>₹1,800/t</strong></div>
+                  <div class="mini-item"><span>Coconut husk</span><strong>₹960/t</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="architecture" class="section">
+        <div class="container">
+          <div class="section-title">
+            <h2>System architecture</h2>
+            <p>Modern, secure, and extensible layers for biomass data, AI recommendations, and circular-economy operations.</p>
+          </div>
+          <div class="grid-4">
+            <article class="card info-card">
+              <div class="icon-wrap"><i class="fa-solid fa-display"></i></div>
+              <h3>Frontend experience</h3>
+              <p>Responsive React + TypeScript UI with dashboards for farmers, buyers, admins, and researchers.</p>
+            </article>
+            <article class="card info-card">
+              <div class="icon-wrap"><i class="fa-solid fa-server"></i></div>
+              <h3>Backend API</h3>
+              <p>FastAPI services for authentication, listings, procurement requests, matching, and order workflows.</p>
+            </article>
+            <article class="card info-card">
+              <div class="icon-wrap"><i class="fa-solid fa-database"></i></div>
+              <h3>PostgreSQL</h3>
+              <p>Structured storage for user profiles, listings, orders, consent records, and anonymized research datasets.</p>
+            </article>
+            <article class="card info-card">
+              <div class="icon-wrap"><i class="fa-solid fa-robot"></i></div>
+              <h3>AI + ML layer</h3>
+              <p>Rules-based estimator and machine-learning evaluation for yield, viability, and recommendation ranking.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="schema" class="section">
+        <div class="container">
+          <div class="section-title">
+            <h2>Database schema and key entities</h2>
+            <p>Clear separation between user identities, market flows, AI estimates, and consent-based research datasets.</p>
+          </div>
+          <div class="schema-grid">
+            <div class="schema-card">
+              <h4>Users & access</h4>
+              <ul>
+                <li>user_accounts</li>
+                <li>user_profiles</li>
+                <li>roles and permissions</li>
+                <li>audit logs and access controls</li>
+              </ul>
+            </div>
+            <div class="schema-card">
+              <h4>Marketplace</h4>
+              <ul>
+                <li>residue_listings</li>
+                <li>procurement_requests</li>
+                <li>purchase_orders</li>
+                <li>transaction_history</li>
+              </ul>
+            </div>
+            <div class="schema-card">
+              <h4>AI and research</h4>
+              <ul>
+                <li>valuation_estimates</li>
+                <li>recommendations</li>
+                <li>questionnaires</li>
+                <li>anonymized research_exports</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="plan" class="section">
+        <div class="container">
+          <div class="section-title">
+            <h2>Implementation plan</h2>
+            <p>Delivered in a phased sequence to keep architecture clean, auditable, and easy to extend.</p>
+          </div>
+          <div class="timeline">
+            <article class="phase">
+              <span class="number">01</span>
+              <h4>Phase 1</h4>
+              <p>Build responsive frontend, role dashboards, and navigation with reusable UI modules.</p>
+            </article>
+            <article class="phase">
+              <span class="number">02</span>
+              <h4>Phase 2</h4>
+              <p>Integrate authentication, database schema, farmer listings, and buyer demand management.</p>
+            </article>
+            <article class="phase">
+              <span class="number">03</span>
+              <h4>Phase 3</h4>
+              <p>Implement matching, orders, notifications, and transaction tracking with validation safeguards.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="dashboard" class="section">
+        <div class="container">
+          <div class="section-title">
+            <h2>Role-based dashboards</h2>
+            <p>Every user role has a dedicated operational view, tailored to the actions and risk boundary relevant to that stakeholder.</p>
+          </div>
+          <div class="dashboard-shell">
+            <div class="dashboard-toolbar">
+              <button type="button" class="role-toggle active" data-role="farmer">Farmer dashboard</button>
+              <button type="button" class="role-toggle" data-role="buyer">Buyer dashboard</button>
+              <button type="button" class="role-toggle" data-role="admin">Administrator</button>
+              <button type="button" class="role-toggle" data-role="researcher">Researcher</button>
+            </div>
+            <div id="dashboardGrid" class="dashboard-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="marketplace" class="section">
+        <div class="container">
+          <div class="market-header">
+            <div class="section-title" style="margin-bottom:0;">
+              <h2>Marketplace</h2>
+              <p>Search, filter, and evaluate buyer-seller opportunities across residue type, district, and price.</p>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="market-filters">
+              <div class="field">
+                <label for="marketSearch">Search listings</label>
+                <input id="marketSearch" type="search" placeholder="Rice, sugarcane, seller, district..." />
+              </div>
+              <div class="select-field">
+                <label for="residueFilter">Residue type</label>
+                <select id="residueFilter"><option value="All">All residues</option></select>
+              </div>
+              <div class="select-field">
+                <label for="districtFilter">District</label>
+                <select id="districtFilter"><option value="All">All districts</option></select>
+              </div>
+              <div class="select-field">
+                <label for="priceCap">Max price</label>
+                <select id="priceCap">
+                  <option value="1200">₹1,200/t</option>
+                  <option value="1500">₹1,500/t</option>
+                  <option value="1800">₹1,800/t</option>
+                  <option value="2200">₹2,200/t</option>
+                  <option value="2500" selected>₹2,500/t</option>
+                </select>
+              </div>
+            </div>
+            <div id="listingGrid" class="listing-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="listing" class="section">
+        <div class="container app-grid">
+          <div class="form-card">
+            <div class="form-header">
+              <div>
+                <h3>Farmer listing form</h3>
+                <p class="muted">Publish residue availability and expected value.</p>
+              </div>
+            </div>
+            <form id="listingForm">
+              <div class="form-grid">
+                <div class="form-block">
+                  <label for="sellerName">Seller name</label>
+                  <input id="sellerName" name="sellerName" type="text" value="Aadhavan Agro" required />
+                </div>
+                <div class="form-block">
+                  <label for="district">District</label>
+                  <input id="district" name="district" type="text" value="Thanjavur" required />
+                </div>
+                <div class="form-block">
+                  <label for="residue">Residue type</label>
+                  <select id="residue" name="residue">
+                    <option>Rice Straw</option>
+                    <option>Sugarcane Bagasse</option>
+                    <option>Coconut Husk</option>
+                    <option>Cotton Stalk</option>
+                    <option>Maize Cobs</option>
+                  </select>
+                </div>
+                <div class="form-block">
+                  <label for="cropType">Crop type</label>
+                  <input id="cropType" name="cropType" type="text" value="Rice" required />
+                </div>
+                <div class="form-block">
+                  <label for="quantity">Quantity available</label>
+                  <input id="quantity" name="quantity" type="number" value="4.5" min="0.1" step="0.1" required />
+                </div>
+                <div class="form-block">
+                  <label for="unit">Measurement unit</label>
+                  <select id="unit" name="unit">
+                    <option>t</option>
+                    <option>kg</option>
+                  </select>
+                </div>
+                <div class="form-block">
+                  <label for="quality">Quality grade</label>
+                  <input id="quality" name="quality" type="text" value="Dry and clean" required />
+                </div>
+                <div class="form-block">
+                  <label for="moisture">Moisture %</label>
+                  <input id="moisture" name="moisture" type="number" value="12" min="0" max="100" />
+                </div>
+                <div class="form-block">
+                  <label for="price">Expected price per tonne</label>
+                  <input id="price" name="price" type="number" value="1600" min="0" required />
+                </div>
+                <div class="form-block">
+                  <label for="distance">Pickup distance (km)</label>
+                  <input id="distance" name="distance" type="number" value="28" min="0" />
+                </div>
+                <div class="form-block full">
+                  <label for="availability">Availability date</label>
+                  <input id="availability" name="availability" type="date" value="2026-10-24" required />
+                </div>
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary">Publish listing</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="ai-preview">
+            <div class="callout">
+              <strong>Business rule:</strong> farmers edit only their own listings; buyers access authorized order information; public marketplace profiles separate personal location data from residue inventory details.
+            </div>
+            <div class="result-box">
+              <h4>Quick marketplace summary</h4>
+              <div class="main-value">₹1.4K–₹1.8K</div>
+              <div class="muted" style="margin-top:0.5rem;">Indicative residue price range across verified listings</div>
+              <div class="breakdown">
+                <div><span>Verified sellers</span><strong>4</strong></div>
+                <div><span>Avg. distance</span><strong>36 km</strong></div>
+                <div><span>New enquiries</span><strong>12</strong></div>
+                <div><span>Orders</span><strong>9</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ai" class="section">
+        <div class="container app-grid">
+          <div class="form-card">
+            <div class="ai-header">
+              <div>
+                <h3>AI valuation engine</h3>
+                <p class="muted">Rules-based estimation before model validation or production deployment.</p>
+              </div>
+            </div>
+            <form id="aiEstimatorForm">
+              <div class="form-grid">
+                <div class="form-block">
+                  <label for="area">Cultivated area (acres)</label>
+                  <input id="area" name="area" type="number" value="18" min="0" required />
+                </div>
+                <div class="form-block">
+                  <label for="production">Yield per acre (t)</label>
+                  <input id="production" name="production" type="number" value="2.4" min="0" step="0.1" required />
+                </div>
+                <div class="form-block">
+                  <label for="season">Season</label>
+                  <select id="season" name="season">
+                    <option>Kharif</option>
+                    <option>Rabi</option>
+                    <option>Summer</option>
+                  </select>
+                </div>
+                <div class="form-block">
+                  <label for="residueFactor">Residue factor</label>
+                  <input id="residueFactor" name="residueFactor" type="number" value="0.22" min="0" step="0.01" required />
+                </div>
+                <div class="form-block">
+                  <label for="recovery">Recovery ratio</label>
+                  <input id="recovery" name="recovery" type="number" value="0.66" min="0" max="1" step="0.01" required />
+                </div>
+                <div class="form-block">
+                  <label for="priceKg">Expected selling value (₹/kg)</label>
+                  <input id="priceKg" name="priceKg" type="number" value="1.8" min="0" step="0.1" required />
+                </div>
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary">Estimate value</button>
+              </div>
+            </form>
+          </div>
+
+          <div id="aiResultWrap" class="panel"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container app-grid">
+          <div class="panel">
+            <div class="form-header">
+              <div>
+                <h3>Buyer-seller matching engine</h3>
+                <p class="muted">Rank relevant listings by quantity, quality, price, and logistics fit.</p>
+              </div>
+            </div>
+            <form id="buyerRequirementForm">
+              <div class="form-grid">
+                <div class="form-block">
+                  <label for="buyerResidue">Residue required</label>
+                  <select id="buyerResidue" name="buyerResidue">
+                    <option>Rice Straw</option>
+                    <option>Sugarcane Bagasse</option>
+                    <option>Coconut Husk</option>
+                    <option>Cotton Stalk</option>
+                    <option>Maize Cobs</option>
+                  </select>
+                </div>
+                <div class="form-block">
+                  <label for="buyerDistrict">Preferred district</label>
+                  <select id="buyerDistrict" name="buyerDistrict">
+                    <option>Thanjavur</option>
+                    <option>Coimbatore</option>
+                    <option>Madurai</option>
+                    <option>Tirupur</option>
+                    <option>Salem</option>
+                  </select>
+                </div>
+                <div class="form-block">
+                  <label for="buyerQty">Required quantity (t)</label>
+                  <input id="buyerQty" name="buyerQty" type="number" value="4" min="1" />
+                </div>
+                <div class="form-block">
+                  <label for="buyerPrice">Target price (₹/t)</label>
+                  <input id="buyerPrice" name="buyerPrice" type="number" value="1700" min="0" />
+                </div>
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary">Find matches</button>
+              </div>
+            </form>
+            <div id="matchList" class="match-list" style="margin-top:1rem;"></div>
+          </div>
+
+          <div class="panel">
+            <div class="form-header">
+              <div>
+                <h3>Recommendation logic</h3>
+                <p class="muted">Rankings combine quality, compatibility, distance, and price signals.</p>
+              </div>
+            </div>
+            <div class="callout">
+              The matching engine gives priority to verified sellers, compatible residue types, and feasible logistics. It prevents orders for stock above available quantity and keeps model confidence visible in the match score.
+            </div>
+            <div class="breakdown" style="margin-top:1rem;">
+              <div><span>Price fit</span><strong>High</strong></div>
+              <div><span>Distance fit</span><strong>Medium</strong></div>
+              <div><span>Quality fit</span><strong>High</strong></div>
+              <div><span>Safety flags</span><strong>None</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="research" class="section">
+        <div class="container research-grid">
+          <div class="form-card">
+            <div class="form-header">
+              <div>
+                <h3>Consented research questionnaire</h3>
+                <p class="muted">Collect essential data while separating PII from analytical records.</p>
+              </div>
+            </div>
+            <form id="researchForm">
+              <div class="form-grid">
+                <div class="form-block">
+                  <label for="respondent">Respondent category</label>
+                  <select id="respondent" name="respondent">
+                    <option>Farmer</option>
+                    <option>Processor</option>
+                    <option>Entrepreneur</option>
+                    <option>Researcher</option>
+                  </select>
+                </div>
+                <div class="form-block">
+                  <label for="researchDistrict">District</label>
+                  <input id="researchDistrict" name="district" type="text" value="Tiruchirapalli" required />
+                </div>
+                <div class="form-block">
+                  <label for="researchCrop">Main crop</label>
+                  <input id="researchCrop" name="crop" type="text" value="Rice" required />
+                </div>
+                <div class="form-block">
+                  <label for="researchResidue">Residue type</label>
+                  <input id="researchResidue" name="residue" type="text" value="Rice straw" required />
+                </div>
+                <div class="form-block">
+                  <label for="researchQty">Quantity generated</label>
+                  <input id="researchQty" name="quantity" type="number" value="4.7" min="0" step="0.1" required />
+                </div>
+                <div class="form-block">
+                  <label for="researchValue">Current value estimate</label>
+                  <input id="researchValue" name="value" type="number" value="7600" min="0" required />
+                </div>
+                <div class="form-block full">
+                  <label for="consent">Consent given</label>
+                  <select id="consent" name="consent">
+                    <option value="yes">Yes</option>
+                    <option value="pending">Pending</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary">Save response</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="panel">
+            <div class="form-header">
+              <div>
+                <h3>Research snapshot</h3>
+                <p class="muted">Anonymized responses and data completeness indicators.</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>District</th>
+                    <th>Crop</th>
+                    <th>Residue</th>
+                    <th>Qty</th>
+                    <th>Value</th>
+                    <th>Consent</th>
+                  </tr>
+                </thead>
+                <tbody id="researchTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-banner">
+        <div class="container">
+          <div class="banner-box">
+            <div>
+              <h3>Build circular value from residue streams.</h3>
+              <p>From field to commerce, AI, and research, the platform turns waste into measurable opportunities.</p>
+            </div>
+            <a href="#contact" class="btn btn-primary">Talk to the team</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="container footer-inner">
+        <div>
+          <strong>AgriWaste2Wealth</strong><br />
+          <span>Industrial biomass marketplace • AI valuation • research-backed planning</span>
+        </div>
+        <div class="socials" aria-label="Social links">
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
